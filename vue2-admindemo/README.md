@@ -1,6 +1,6 @@
 # note
 
-> A Vue.js project
+> A Vue.js project Admin-demo 
 
 ## Build Setup
 
