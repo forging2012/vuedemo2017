@@ -19,6 +19,11 @@
 与下面这个一样的，所以使用过程中，直接看下面这个文档即可了
 <a href="http://www.swiper.com.cn/usage/index.html">swiper中文文档</a>
 </p>
+也简单的使用了相关路由动画，上面路由部分代码均来自互联网，如下
+vue-router:文档
+<a href="https://router.vuejs.org/">vue实现app页面切换效果</a>
+<a href="https://www.vue-js.com/topic/58c793f4a476ff9533840114">vuerouter文档</a>
+<a href="http://huisky.com/blog/17062313595128">Vue-router结合transition实现app前进后退动画切换效果</a>
 ``` bash
 # install dependencies
 npm install
