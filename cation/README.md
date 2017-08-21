@@ -13,8 +13,12 @@
 <a href="https://github.com/mhxy13867806343/vuedemo2017/blob/master/cation/004.png">
 图片4
 </a>
-## Build Setup
-
+<p>
+主要用了这个组件，下面的链接是它的相关说明 ，有关的api与swiper完全一样，
+<a href="https://github.com/surmon-china/vue-awesome-swiper">Vue-Awesome-Swiper</a>
+与下面这个一样的，所以使用过程中，直接看下面这个文档即可了
+<a href="http://www.swiper.com.cn/usage/index.html">swiper中文文档</a>
+</p>
 ``` bash
 # install dependencies
 npm install
