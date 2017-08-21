@@ -1,0 +1,306 @@
+<html>
+<meta charset="utf-8">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<style>
+  .pagenavigate{
+    border:1px solid #78cdd1;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    background-color:#90d7ec;
+    float:left;
+    margin:0 2px;
+  }
+
+  .pagenext,.pagelast,.pagefirst,.pagepre{
+    border:1px solid #78cdd1;
+    width:40px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    float:left;
+    margin:0 1px;
+  }
+
+  .pagenavigate a{
+    width:20px;
+    height:20px;
+    color:#fffef9;
+    background-color:#90d7ec;
+    text-decoration:none;
+  }
+
+
+  .pagenext a,.pagelast a,.pagefirst a,.pagepre a{
+    width:40px;
+    height:20px;
+    color:#009ad6;
+    font-size:12px;
+    text-decoration:none;
+
+  }
+  #contents{
+    height:150px;
+  }
+  .pagenavigateon{
+    border:1px solid #78cdd1;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    color:#ff0000!important;
+    background-color:#90d7ec;
+  }
+
+  .pagenavigateon a{
+    color:#ff0000;
+    text-decoration:none;
+  }
+</style>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <script type="text/javascript" src="jquery-1.4.4.js">
+  </script>
+  <script type="text/javascript" src="jquery.easypage.js">
+  </script>
+  <script type="text/javascript">
+    //contentclass   要分页内容的class名称 默认的为contentlist
+    //navigateid         放置导航按钮的位置id 默认为mynavigate
+    //everycount          每页显示多少个
+    //navigatecount     导航按钮开始显示多少个，从第二个开始显示为双倍
+    $(
+      function(){
+        $.easypage({'contentclass':'contentlist','navigateid':'navigatediv','everycount':5,'navigatecount':5});
+      }
+    )
+  </script>
+</head>
+
+<body>
+<div id="contents">
+  <div class="contentlist">1.美国宣布新军事战略将重心转向亚太地区</div>
+  <div class="contentlist">2.春运期间极端最低温达零下5度</div>
+  <div class="contentlist">3.上海妇女社会地位调查结果公布</div>
+  <div class="contentlist">4.暖手袋发生漏液有危险 </div>
+  <div class="contentlist">5.上海相关调查称新车内挥发性有机物严重超标</div>
+  <div class="contentlist">6.申城进入流感高发期</div>
+  <div class="contentlist">7.上海仍有部分幼儿园开设各类收费兴趣班 家长支持</div>
+  <div class="contentlist">8.达人秀将揭晓复赛阵容 洗碗工麻袋姐走改编路线</div>
+  <div class="contentlist">9.苹果侵权中国作家立案 韩寒等9人索赔1200万元</div>
+  <div class="contentlist">10.嘉汇广场一商务楼外墙剥落砸伤过路男子(图)</div>
+  <div class="contentlist">11.石岚二村小区高空抛物现象严重 多辆轿车被砸</div>
+  <div class="contentlist">12.女子从11家银行申领24张信用卡 透支本金45万</div>
+  <div class="contentlist">13.松江一家化工厂发生爆炸 一名技术工人当场死亡</div>
+  <div class="contentlist">14.UPS公司内鬼组团集体犯罪侵占公司运费980多万元</div>
+  <div class="contentlist">15.奔驰车胎漏气监测不报警</div>
+  <div class="contentlist">16.CBA-新疆新援能否战JR 连败北京遇强敌</div>
+  <div class="contentlist">17.科比30+8湖人负开拓者 詹韦休战热火三加时胜老鹰</div>
+  <div class="contentlist">18.英媒惊曝曼联挖角兰帕德 小贝最新内裤广告超酷造型</div>
+  <div class="contentlist">19.曼奇尼笑迎孙继海 英主力紧拥</div>
+  <div class="contentlist">20.冬运花滑庞清佟健复出夺冠 </div>
+  <div class="contentlist">21.中国彩票年销2214亿涨33%</div>
+  <div class="contentlist">22.双色球26注530万分落14省市</div>
+  <div class="contentlist">23.安全是根本 自主品牌C-NCAP碰撞评说</div>
+  <div class="contentlist">24.赏豪车买车尽在车型总汇</div>
+  <div class="contentlist">25.蔡澜：风情万种的日本版朱茵</div>
+  <div class="contentlist">26.微访谈：黄觉其实是个艺术家</div>
+  <div class="contentlist">27.杨澜访邓婕：当家庭主妇难</div>
+  <div class="contentlist">28.中学女生迎新“黑丝”上阵</div>
+  <div class="contentlist">29.陆空三军都干过的将军</div>
+</div>
+<br/><br/><br/>
+
+<div id="navigatediv">
+
+</div>
+<script>
+  ;(
+    function($){
+      $.extend({
+        "easypage":function(options){
+          options = $.extend({//参数设置
+              contentclass:"contentlist",//要显示的内容的class
+              navigateid:"navigatediv",//导航按钮所在的dom的id
+              everycount:"5",//每页显示多少个
+              navigatecount:"5"//导航按钮一次显示多少个
+            },
+            options);
+          var currentpage = 0;//当前页
+          var contents = $("."+options.contentclass);//要显示的内容
+          var contentcount = contents.length;//得到内容的个数
+          var pagecount = Math.ceil(contentcount/options.everycount);//计算出页数
+          //拼接导航按钮
+          var navigatehtml = "<div id='pagefirst' class='pagefirst'><a href='javascript:void(0)'>首页</a></div><div id='pagepre' class='pagepre'><a href='javascript:void(0)'>上一页</a></div>";
+          for(var i = 1;i <= pagecount;i++){
+            navigatehtml+='<div class="pagenavigate"><a href="javascript:void(0)">'+i+'</a></div>';
+          }
+          navigatehtml+="<div id='pagenext' class='pagenext'><a href='javascript:void(0)'>下一页</a></div><div id='pagelast' class='pagelast'><a href='javascript:void(0)'>尾页</a></div>";
+
+          //加载导航按钮
+          $("#"+options.navigateid).html(navigatehtml);
+
+          //得到所有按钮
+          var navigates = $(".pagenavigate");
+
+          //隐藏所有的导航按钮
+          $.extend({
+            "hidenavigates":function(){
+              navigates.each(function(){
+                $(this).hide();
+              })
+            }
+          });
+
+          //显示导航按钮
+          $.extend({
+            "shownavigate":function(currentnavigate){
+              $.hidenavigates();
+              var begin = currentnavigate>=options.navigatecount?currentnavigate-parseInt(options.navigatecount):0;
+              if(begin>navigates.length-2*options.navigatecount){
+                begin = navigates.length-2*options.navigatecount;
+              }
+              for(var i = begin;i < currentnavigate+parseInt(options.navigatecount);i++){
+                $(navigates[i]).show();
+              }
+            }
+          });
+
+          //高亮显示某个按钮
+          $.extend({
+            "lightnavigate":function(currentnavigate){
+              currentnavigate.addClass("pagenavigateon");
+            }
+          });
+
+          //移除所有高亮按钮
+          $.extend({
+            "removelight":function(){
+              $(".pagenavigateon").each(
+                function(){
+                  $(this).removeClass("pagenavigateon");
+                }
+              )
+            }
+          });
+
+          //显示某页的内容
+          $.extend({
+            "showPage":function(page){
+              contents.each(
+                function(contentindex){
+                  if(contentindex>=page*options.everycount && contentindex < (page+1)*options.everycount){
+                    $(this).show();
+                  }else{
+                    $(this).hide();
+                  }
+                }
+              );
+            }
+          });
+
+          //隐藏前进后退按钮
+          $.extend({
+            "hidePreNext":function(page){
+              if(page==pagecount-1){
+                $("#pagenext").hide();
+                $("#pagelast").hide();
+                $("#pagepre").show();
+                $("#pagefirst").show();
+              }else if(page==0){
+                $("#pagepre").hide();
+                $("#pagefirst").hide();
+                $("#pagenext").show();
+                $("#pagelast").show();
+              }else{
+                $("#pagenext").show();
+                $("#pagepre").show();
+                $("#pagefirst").show();
+                $("#pagelast").show();
+              }
+            }
+          });
+          //显示指定的导航按钮
+          $.shownavigate(0);
+          //隐藏所有的内容
+          $.showPage(0);
+          //开始时隐藏后退按钮
+          $.hidePreNext(0);
+          //高亮显示第一个按钮
+          if(pagecount>0){
+            $.lightnavigate($(navigates.get(0)));
+          }
+          //点击导航按钮
+          $(".pagenavigate").each(
+            function(myindex){
+              $(this).click(
+                function(){
+                  $.showPage(myindex);
+                  $.removelight();
+                  $.lightnavigate($(this));
+                  currentpage = myindex;
+                  $.hidePreNext(currentpage);
+                  var na = Math.floor((currentpage+1)/options.navigatecount)*options.navigatecount;
+                  $.shownavigate(na);
+                }
+              );
+            }
+          );
+          //点击后退按钮
+          $("#pagepre").click(
+            function(){
+              --currentpage<=0 && (currentpage=0);
+              $.showPage(currentpage);
+              $.removelight();
+              $.lightnavigate($(navigates.get(currentpage)));
+              $.hidePreNext(currentpage);
+              var na = Math.floor(currentpage/options.navigatecount)*options.navigatecount;
+              $.shownavigate(na);
+            }
+          );
+          //点击前进按钮
+          $("#pagenext").click(
+            function(){
+              ++currentpage>=pagecount-1 && (currentpage=pagecount-1);
+              $.showPage(currentpage);
+              $.removelight();
+              $.lightnavigate($(navigates.get(currentpage)));
+              $.hidePreNext(currentpage);
+
+              var na = Math.floor((currentpage+1)/options.navigatecount)*options.navigatecount;
+              $.shownavigate(na);
+            }
+          );
+          //点击首页按钮
+          $("#pagefirst").click(
+            function(){
+              currentpage=0;
+              $.showPage(currentpage);
+              $.removelight();
+              $.lightnavigate($(navigates.get(currentpage)));
+              $.hidePreNext(currentpage);
+
+              var na = Math.floor((currentpage+1)/options.navigatecount)*options.navigatecount;
+              $.shownavigate(na);
+            }
+          );
+          //点击尾页按钮
+          $("#pagelast").click(
+            function(){
+              currentpage=pagecount-1;
+              $.showPage(currentpage);
+              $.removelight();
+              $.lightnavigate($(navigates.get(currentpage)));
+              $.hidePreNext(currentpage);
+
+              var na = Math.floor((currentpage+1)/options.navigatecount)*options.navigatecount;
+              $.shownavigate(na);
+            }
+          );
+        }
+      });
+    }
+  )(jQuery)
+</script>
+</body>
+</html>
